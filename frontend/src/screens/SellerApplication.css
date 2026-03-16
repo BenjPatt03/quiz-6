@@ -1,0 +1,143 @@
+.seller-application-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.application-box {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.application-box h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.success-message {
+  text-align: center;
+  padding: 30px;
+  background: #f0f7f4;
+  border-radius: 8px;
+  border-left: 4px solid #4caf50;
+}
+
+.success-message h2 {
+  color: #2e7d32;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.success-message p {
+  color: #558b2f;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.home-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s;
+}
+
+.home-btn:hover {
+  background: #388e3c;
+  transform: translateY(-2px);
+}
+
+.benefits,
+.requirements {
+  margin-bottom: 30px;
+}
+
+.benefits h2,
+.requirements h2 {
+  color: #667eea;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.benefits ul,
+.requirements ul {
+  list-style: none;
+  padding: 0;
+}
+
+.benefits li,
+.requirements li {
+  color: #666;
+  padding: 10px 0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.error-message {
+  background: #ffebee;
+  color: #d32f2f;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #d32f2f;
+  margin-bottom: 20px;
+}
+
+.apply-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.apply-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.apply-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.info-text {
+  text-align: center;
+  color: #999;
+  font-size: 0.9rem;
+  margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+  .application-box {
+    padding: 25px;
+  }
+
+  .application-box h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .benefits h2,
+  .requirements h2 {
+    font-size: 1.1rem;
+  }
+}

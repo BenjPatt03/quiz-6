@@ -8,7 +8,10 @@ import HomeScreen from './screens/HomeScreen';
 import ServiceList from './screens/ServiceList';
 import ServiceDetail from './screens/ServiceDetail';
 import UserProfile from './screens/UserProfile';
+import SellerApplication from './screens/SellerApplication';
+import SellerDashboard from './screens/SellerDashboard';
 import AdminUsers from './screens/AdminUsers';
+import ProtectedRoute from './components/ProtectedRoute';
 import Chatbot from './components/Chatbot';
 import './App.css';
 
@@ -23,8 +26,31 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route path="/services" element={<ServiceList />} />
           <Route path="/services/:id" element={<ServiceDetail />} />
-          <Route path="/profile" element={<UserProfile />} />
-          <Route path="/admin/users" element={<AdminUsers />} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <UserProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/apply" element={<SellerApplication />} />
+          <Route
+            path="/seller/dashboard"
+            element={
+              <ProtectedRoute requiredRole="seller">
+                <SellerDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/users"
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminUsers />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </Provider>
