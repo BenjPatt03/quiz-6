@@ -5,6 +5,8 @@ import store from './store';
 import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
 import HomeScreen from './screens/HomeScreen';
+import ServiceList from './screens/ServiceList';
+import ServiceDetail from './screens/ServiceDetail';
 import './App.css';
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
           <Route path="/" element={<HomeScreen />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/register" element={<SignUp />} />
+          <Route path="/services" element={<ServiceList />} />
+          <Route path="/services/:id" element={<ServiceDetail />} />
         </Routes>
       </Router>
     </Provider>

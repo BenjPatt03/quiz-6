@@ -14,6 +14,7 @@ const HomeScreen = () => {
         </div>
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
+          <li><Link to="/services">Services</Link></li>
           {userInfo ? (
             <>
               <li><Link to="/profile">Profile</Link></li>
@@ -54,8 +55,11 @@ const HomeScreen = () => {
       </div>
 
       <div className="services-section">
-        <h3>Browse Services</h3>
-        <p>Coming soon: HVAC services from verified professionals</p>
+        <h3>Browse HVAC Services</h3>
+        <p>Explore and hire trusted HVAC professionals</p>
+        <Link to="/services" className="btn btn-primary">
+          View Services
+        </Link>
       </div>
     </div>
   );
