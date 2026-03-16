@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { login } from '../actions/userActions';
@@ -19,10 +19,12 @@ const SignIn = () => {
     dispatch(login(email, password));
   };
 
-  // Redirect to home if already logged in
-  if (userInfo) {
-    navigate('/');
-  }
+  // Redirect to home if successful login
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  }, [userInfo, navigate]);
 
   return (
     <div className="signin-container">

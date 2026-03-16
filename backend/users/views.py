@@ -35,8 +35,7 @@ class UserProfileView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     http_method_names = ['get']
     
-    @action(detail=False, methods=['get'])
-    def profile(self, request):
+    def list(self, request, *args, **kwargs):
         user = request.user
         serializer = self.get_serializer(user)
         return Response(serializer.data)

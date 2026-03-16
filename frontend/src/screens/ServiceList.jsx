@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../axiosInstance';
 import './ServiceList.css';
@@ -8,7 +7,6 @@ const ServiceList = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { userInfo } = useSelector((state) => state.user);
 
   useEffect(() => {
     const fetchServices = async () => {

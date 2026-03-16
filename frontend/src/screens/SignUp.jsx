@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { register } from '../actions/userActions';
@@ -54,14 +54,18 @@ const SignUp = () => {
   };
 
   // Redirect if registered successfully
-  if (registerSuccess) {
-    navigate('/signin');
-  }
+  useEffect(() => {
+    if (registerSuccess) {
+      navigate('/signin');
+    }
+  }, [registerSuccess, navigate]);
 
   // Redirect to home if already logged in
-  if (userInfo) {
-    navigate('/');
-  }
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  }, [userInfo, navigate]);
 
   return (
     <div className="signup-container">
