@@ -157,3 +157,35 @@
     font-size: 1.5rem;
   }
 }
+
+.paypal-section {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  border: 2px solid #e0e0e0;
+}
+
+.paypal-section h3 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.cancel-btn {
+  width: 100%;
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+
+.cancel-btn:hover {
+  background: #eeeeee;
+}

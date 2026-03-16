@@ -7,6 +7,7 @@ import SignUp from './screens/SignUp';
 import HomeScreen from './screens/HomeScreen';
 import ServiceList from './screens/ServiceList';
 import ServiceDetail from './screens/ServiceDetail';
+import UserProfile from './screens/UserProfile';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route path="/services" element={<ServiceList />} />
           <Route path="/services/:id" element={<ServiceDetail />} />
+          <Route path="/profile" element={<UserProfile />} />
         </Routes>
       </Router>
     </Provider>

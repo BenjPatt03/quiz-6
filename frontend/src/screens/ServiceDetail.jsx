@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { createOrder } from '../actions/orderActions';
 import axiosInstance from '../axiosInstance';
 import './ServiceDetail.css';
 
 const ServiceDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showPayPal, setShowPayPal] = useState(false);
   const { userInfo } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -35,8 +39,21 @@ const ServiceDetail = () => {
       navigate('/signin');
       return;
     }
-    // PayPal integration will be handled in Stage 3
-    alert('PayPal integration coming in Stage 3');
+    setShowPayPal(true);
+  };
+
+  const handlePayPalApprove = async (details) => {
+    if (!service) return;
+
+    const orderData = {
+      service_id: service.id,
+      paypal_transaction_id: details.id,
+      price_paid: service.price,
+    };
+
+    dispatch(createOrder(orderData));
+    setShowPayPal(false);
+    navigate('/profile');
   };
 
   if (loading) {
@@ -95,6 +112,41 @@ const ServiceDetail = () => {
           >
             {userInfo ? 'Avail Service' : 'Sign In to Avail'}
           </button>
+
+          {showPayPal && service && (
+            <div className="paypal-section">
+              <h3>Complete Payment</h3>
+              <PayPalScriptProvider options={{ clientId: process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+                <PayPalButtons
+                  createOrder={(data, actions) => {
+                    return actions.order.create({
+                      purchase_units: [
+                        {
+                          amount: {
+                            value: service.price.toString(),
+                          },
+                          description: service.service_name,
+                        },
+                      ],
+                    });
+                  }}
+                  onApprove={(data, actions) => {
+                    return actions.order.capture().then(handlePayPalApprove);
+                  }}
+                  onError={() => {
+                    alert('Payment failed. Please try again.');
+                    setShowPayPal(false);
+                  }}
+                />
+              </PayPalScriptProvider>
+              <button 
+                onClick={() => setShowPayPal(false)}
+                className="cancel-btn"
+              >
+                Cancel
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
