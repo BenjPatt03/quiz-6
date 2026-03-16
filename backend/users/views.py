@@ -58,3 +58,13 @@ class AdminUserListView(viewsets.ModelViewSet):
                 status=status.HTTP_403_FORBIDDEN
             )
         return super().list(request, *args, **kwargs)
+    
+    def destroy(self, request, *args, **kwargs):
+        if request.user.role != 'admin':
+            return Response(
+                {'detail': 'Only admins can delete users'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+        user = self.get_object()
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

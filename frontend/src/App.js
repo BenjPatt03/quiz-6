@@ -8,12 +8,15 @@ import HomeScreen from './screens/HomeScreen';
 import ServiceList from './screens/ServiceList';
 import ServiceDetail from './screens/ServiceDetail';
 import UserProfile from './screens/UserProfile';
+import AdminUsers from './screens/AdminUsers';
+import Chatbot from './components/Chatbot';
 import './App.css';
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
+        <Chatbot />
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="/signin" element={<SignIn />} />
@@ -21,6 +24,7 @@ function App() {
           <Route path="/services" element={<ServiceList />} />
           <Route path="/services/:id" element={<ServiceDetail />} />
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/admin/users" element={<AdminUsers />} />
         </Routes>
       </Router>
     </Provider>
